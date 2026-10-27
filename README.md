@@ -143,7 +143,7 @@ Pull requests welcome! For major changes, please open an issue first.
 ## 💬 Support
 
 - **Issues:** [GitHub Issues](https://github.com/[your-username]/brightminds-landing/issues)
-- **Email:** your-email@example.com
+- **Email:** brightminds001inc@gmail.com
 - **Twitter:** [@yourhandle](https://twitter.com/yourhandle)
 
 ## 🙏 Credits
