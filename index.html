@@ -3,42 +3,2710 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BrightMinds transforms screen time into learning time. Adaptive, game-based lessons for children ages 4-14. Trusted by 50,000+ families.">
-    <meta name="keywords" content="kids education, learning app, children education, edtech, adaptive learning, kids learning app">
-    <meta name="author" content="BrightMinds">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="BrightMinds — Where Learning Becomes an Adventure">
-    <meta property="og:description" content="Turn screen time into learning time. Adaptive lessons kids love and parents trust.">
-    <meta property="og:image" content="https://your-domain.com/og-image.png">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="BrightMinds — Where Learning Becomes an Adventure">
-    <meta name="twitter:description" content="Turn screen time into learning time. Adaptive lessons kids love and parents trust.">
-    
     <title>BrightMinds — Where Learning Becomes an Adventure</title>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236C5CE7'><path d='M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6C5CE7;
+            --primary-light: #A29BFE;
+            --primary-dark: #5A4BD1;
+            --secondary: #00CEC9;
+            --accent: #FD79A8;
+            --accent-warm: #FDCB6E;
+            --bg-primary: #FAFBFF;
+            --bg-secondary: #F0F0FF;
+            --text-primary: #1A1A2E;
+            --text-secondary: #4A4A6A;
+            --text-muted: #8E8EA0;
+            --white: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow-sm: 0 2px 8px rgba(108, 92, 231, 0.08);
+            --shadow-md: 0 8px 30px rgba(108, 92, 231, 0.12);
+            --shadow-lg: 0 20px 60px rgba(108, 92, 231, 0.15);
+            --shadow-xl: 0 30px 80px rgba(108, 92, 231, 0.2);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Ambient floating elements */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary-light);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            bottom: 20%;
+            left: -80px;
+            animation-delay: -7s;
+        }
+
+        .orb-3 {
+            width: 250px;
+            height: 250px;
+            background: var(--accent);
+            top: 50%;
+            right: -50px;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(15px, 10px) scale(1.02); }
+        }
+
+        /* Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .navbar.scrolled {
+            padding: 8px 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1.5px solid rgba(108, 92, 231, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(108, 92, 231, 0.05);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 1rem;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--primary);
+            padding: 12px 20px;
+        }
+
+        .btn-ghost:hover {
+            background: rgba(108, 92, 231, 0.08);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            border: none;
+            background: none;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(108, 92, 231, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(0, 206, 201, 0.06) 0%, transparent 60%),
+                        radial-gradient(ellipse at 50% 50%, rgba(253, 121, 168, 0.04) 0%, transparent 60%);
+            z-index: -1;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px 6px 6px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-badge-dot {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .hero-stat {
+            text-align: left;
+        }
+
+        .hero-stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .hero-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .hero-card-illustration {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, var(--bg-secondary), rgba(108, 92, 231, 0.05));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .illustration-elements {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .illust-item {
+            aspect-ratio: 1;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            animation: gentleBounce 3s ease-in-out infinite;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .illust-item:nth-child(1) { background: linear-gradient(135deg, #FF6B6B20, #FF6B6B40); animation-delay: 0s; }
+        .illust-item:nth-child(2) { background: linear-gradient(135deg, #4ECDC420, #4ECDC440); animation-delay: 0.2s; }
+        .illust-item:nth-child(3) { background: linear-gradient(135deg, #45B7D120, #45B7D140); animation-delay: 0.4s; }
+        .illust-item:nth-child(4) { background: linear-gradient(135deg, #96CEB420, #96CEB440); animation-delay: 0.6s; }
+        .illust-item:nth-child(5) { background: linear-gradient(135deg, #FFEAA720, #FFEAA740); animation-delay: 0.8s; }
+        .illust-item:nth-child(6) { background: linear-gradient(135deg, #DDA0DD20, #DDA0DD40); animation-delay: 1s; }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .hero-card-progress {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .progress-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .progress-info {
+            flex: 1;
+        }
+
+        .progress-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        .progress-text {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar-wrap {
+            margin-top: 4px;
+            height: 6px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: var(--radius-full);
+            animation: progressGrow 2s ease-out;
+        }
+
+        @keyframes progressGrow {
+            from { width: 0; }
+            to { width: 75%; }
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 12px 16px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: floatBadge 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .floating-badge-1 {
+            top: -10px;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-badge-2 {
+            bottom: 40px;
+            left: -30px;
+            animation-delay: -2s;
+        }
+
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .badge-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .badge-icon-green {
+            background: rgba(0, 206, 201, 0.15);
+        }
+
+        .badge-icon-purple {
+            background: rgba(108, 92, 231, 0.15);
+        }
+
+        /* ========== SOCIAL PROOF ========== */
+        .social-proof {
+            padding: 60px 0;
+            border-top: 1px solid rgba(108, 92, 231, 0.06);
+            border-bottom: 1px solid rgba(108, 92, 231, 0.06);
+        }
+
+        .social-proof-label {
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .logos-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-item:hover {
+            opacity: 0.8;
+        }
+
+        .logo-item span {
+            font-size: 1.5rem;
+        }
+
+        .social-stats-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-stat {
+            text-align: center;
+        }
+
+        .social-stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .social-stat-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ========== SECTION HEADERS ========== */
+        .section-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 64px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: rgba(108, 92, 231, 0.08);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== FEATURES ========== */
+        .features {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 40px 32px;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(108, 92, 231, 0.1);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        .feature-icon-1 { background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(108, 92, 231, 0.2)); }
+        .feature-icon-2 { background: linear-gradient(135deg, rgba(0, 206, 201, 0.1), rgba(0, 206, 201, 0.2)); }
+        .feature-icon-3 { background: linear-gradient(135deg, rgba(253, 121, 168, 0.1), rgba(253, 121, 168, 0.2)); }
+        .feature-icon-4 { background: linear-gradient(135deg, rgba(253, 203, 110, 0.1), rgba(253, 203, 110, 0.2)); }
+        .feature-icon-5 { background: linear-gradient(135deg, rgba(116, 185, 255, 0.1), rgba(116, 185, 255, 0.2)); }
+        .feature-icon-6 { background: linear-gradient(135deg, rgba(162, 155, 254, 0.1), rgba(162, 155, 254, 0.2)); }
+
+        .feature-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== PRODUCT SHOWCASE ========== */
+        .showcase {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .showcase-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .showcase-visual {
+            position: relative;
+        }
+
+        .showcase-screen {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            border: 1px solid rgba(108, 92, 231, 0.08);
+        }
+
+        .screen-header {
+            padding: 16px 20px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .screen-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #FF6B6B; }
+        .dot-yellow { background: #FFEAA7; }
+        .dot-green { background: #00CEC9; }
+
+        .screen-content {
+            padding: 32px;
+        }
+
+        .lesson-card {
+            background: var(--bg-secondary);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .lesson-card:hover {
+            transform: translateX(4px);
+        }
+
+        .lesson-emoji {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .lesson-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .lesson-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .lesson-status {
+            margin-left: auto;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            flex-shrink: 0;
+        }
+
+        .status-complete {
+            background: rgba(0, 206, 201, 0.1);
+            color: var(--secondary);
+        }
+
+        .status-progress {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary);
+        }
+
+        .status-new {
+            background: rgba(253, 203, 110, 0.15);
+            color: #E17055;
+        }
+
+        .showcase-info .section-tag {
+            margin-bottom: 16px;
+        }
+
+        .showcase-title {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .showcase-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .showcase-checklist {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .showcase-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            font-size: 0.7rem;
+        }
+
+        /* ========== BENEFITS ========== */
+        .benefits {
+            padding: 120px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .benefit-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-light), rgba(108, 92, 231, 0.2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .benefit-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            color: var(--accent-warm);
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .avatar-1 { background: linear-gradient(135deg, #FFD3E0, #FFA7C4); }
+        .avatar-2 { background: linear-gradient(135deg, #C3E8FF, #7EC8F8); }
+        .avatar-3 { background: linear-gradient(135deg, #D5F5E3, #82E0AA); }
+
+        .author-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .author-info p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .testimonial-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(108, 92, 231, 0.08);
+            color: var(--primary);
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+        }
+
+        /* ========== PRICING ========== */
+        .pricing {
+            padding: 120px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 44px 36px;
+            border: 1px solid rgba(108, 92, 231, 0.08);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pricing-popular {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-plan {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 8px;
+            opacity: 0.7;
+        }
+
+        .pricing-card.featured .pricing-plan {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .pricing-price {
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+            margin-bottom: 8px;
+        }
+
+        .price-currency {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .price-amount {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .price-period {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            font-weight: 500;
+        }
+
+        .pricing-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin-bottom: 32px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            font-weight: 800;
+            font-size: 0.75rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pricing-card:not(.featured) .pricing-features li::before {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary);
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        .pricing-card.featured .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-guarantee {
+            text-align: center;
+            margin-top: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ========== FAQ ========== */
+        .faq {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .faq-list {
+            max-width: 780px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(108, 92, 231, 0.15);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(108, 92, 231, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .faq-item.open .faq-icon {
+            background: var(--primary);
+            color: white;
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.4s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 28px 24px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== CTA ========== */
+        .cta-section {
+            padding: 120px 0;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-xl);
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .cta-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            max-width: 540px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 16px 40px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-btn-outline {
+            background: transparent;
+            color: white;
+            padding: 16px 40px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .cta-btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cta-note {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 80px 0 40px;
+            background: var(--text-primary);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo-icon {
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            max-width: 300px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+            opacity: 0.5;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        /* ========== MOBILE NAV ========== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .showcase-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-card:last-child {
+                grid-column: span 2;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-stats {
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+
+            .pricing-card:last-child {
+                grid-column: 1;
+                max-width: 100%;
+            }
+
+            .cta-card {
+                padding: 48px 28px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .logos-row {
+                gap: 24px;
+            }
+
+            .social-stats-row {
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-cta .btn {
+                width: 100%;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .hero-stat {
+                text-align: center;
+            }
+
+            .benefit-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-btn-white, .cta-btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* ========== ACCESSIBILITY ========== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal, .reveal-left, .reveal-right, .reveal-scale {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Custom cursor interaction */
+        .interactive {
+            cursor: pointer;
+        }
+
+        /* Smooth scroll indicator */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 10000;
+            transition: width 0.1s linear;
+        }
+    </style>
 </head>
 <body>
-    <!-- 
-    ================================
-    IMPORTANT: Replace this file content with the FULL landing 
-    page code from the previous message.
-    
-    The full code is approximately 2,400 lines. Due to length 
-    constraints in this message, paste the complete HTML from 
-    the earlier response that includes:
-    
-    - All <style> CSS (lines 10-1200)
-    - All <body> HTML content (lines 1200-2200)
-    - All <script> JavaScript (lines 2200-2400)
-    
-    The code block starts with <!DOCTYPE html> and ends with </html>
-    ================================
-    -->
+    <!-- Ambient orbs -->
+    <div class="ambient-orb orb-1" aria-hidden="true"></div>
+    <div class="ambient-orb orb-2" aria-hidden="true"></div>
+    <div class="ambient-orb orb-3" aria-hidden="true"></div>
+
+    <!-- Scroll progress indicator -->
+    <div class="scroll-indicator" id="scrollIndicator" aria-hidden="true"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation menu">
+        <a href="#features" onclick="closeMobileMenu()">Features</a>
+        <a href="#showcase" onclick="closeMobileMenu()">How It Works</a>
+        <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+        <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+        <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+        <a href="#pricing" class="btn btn-primary" onclick="closeMobileMenu()">Start Free Trial</a>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <a href="#" class="logo" aria-label="BrightMinds home">
+                <div class="logo-icon" aria-hidden="true">✦</div>
+                BrightMinds
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#showcase">How It Works</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="#" class="btn btn-ghost">Log In</a>
+                <a href="#pricing" class="btn btn-primary">Start Free Trial</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero" aria-labelledby="hero-title">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge reveal stagger-1">
+                    <div class="hero-badge-dot" aria-hidden="true">🎉</div>
+                    Trusted by 50,000+ families worldwide
+                </div>
+
+                <h1 id="hero-title" class="reveal stagger-2">
+                    Turn Screen Time<br>Into <span class="gradient-text">Learning Time</span>
+                </h1>
+
+                <p class="hero-description reveal stagger-3">
+                    BrightMinds transforms your child's curiosity into academic confidence through interactive, adaptive lessons that kids genuinely love — and parents trust.
+                </p>
+
+                <div class="hero-cta reveal stagger-4">
+                    <a href="#pricing" class="btn btn-primary btn-large">
+                        Start 14-Day Free Trial →
+                    </a>
+                    <a href="#showcase" class="btn btn-secondary btn-large">
+                        See How It Works
+                    </a>
+                </div>
+
+                <div class="hero-stats reveal stagger-5">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" id="stat1">50K+</div>
+                        <div class="hero-stat-label">Active Learners</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">4.9★</div>
+                        <div class="hero-stat-label">Parent Rating</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">93%</div>
+                        <div class="hero-stat-label">Grade Improvement</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal-right stagger-3">
+                <div class="hero-image-wrapper">
+                    <div class="floating-badge floating-badge-1" aria-hidden="true">
+                        <div class="badge-icon badge-icon-green">🏆</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary);">Achievement!</div>
+                            <div style="font-size: 0.7rem; color: var(--text-muted);">Math Master Level 5</div>
+                        </div>
+                    </div>
+
+                    <div class="floating-badge floating-badge-2" aria-hidden="true">
+                        <div class="badge-icon badge-icon-purple">📈</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary);">+42%</div>
+                            <div style="font-size: 0.7rem; color: var(--text-muted);">This Month</div>
+                        </div>
+                    </div>
+
+                    <div class="hero-card">
+                        <div class="hero-card-illustration">
+                            <div class="illustration-elements">
+                                <div class="illust-item" aria-hidden="true">📐</div>
+                                <div class="illust-item" aria-hidden="true">🔬</div>
+                                <div class="illust-item" aria-hidden="true">📖</div>
+                                <div class="illust-item" aria-hidden="true">🎨</div>
+                                <div class="illust-item" aria-hidden="true">🌍</div>
+                                <div class="illust-item" aria-hidden="true">🎵</div>
+                            </div>
+                        </div>
+
+                        <div class="hero-card-progress">
+                            <div class="progress-avatar" aria-hidden="true">👧</div>
+                            <div class="progress-info">
+                                <div class="progress-name">Emma's Progress</div>
+                                <div class="progress-text">3 of 4 lessons completed today</div>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar-fill" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof" aria-label="Social proof and trust indicators">
+        <div class="container">
+            <p class="social-proof-label reveal">Endorsed & Featured By</p>
+            <div class="logos-row reveal stagger-1">
+                <div class="logo-item"><span>📺</span> EdTech Weekly</div>
+                <div class="logo-item"><span>🏫</span> LearnHub</div>
+                <div class="logo-item"><span>📱</span> KidSafe+</div>
+                <div class="logo-item"><span>🎓</span> ParentChoice</div>
+                <div class="logo-item"><span>⭐</span> AppStore Editor</div>
+            </div>
+            <div class="social-stats-row reveal stagger-2">
+                <div class="social-stat">
+                    <div class="social-stat-number">2M+</div>
+                    <div class="social-stat-text">Lessons Completed</div>
+                </div>
+                <div class="social-stat">
+                    <div class="social-stat-number">150+</div>
+                    <div class="social-stat-text">Countries Reached</div>
+                </div>
+                <div class="social-stat">
+                    <div class="social-stat-number">12</div>
+                    <div class="social-stat-text">Awards Won</div>
+                </div>
+                <div class="social-stat">
+                    <div class="social-stat-number">98%</div>
+                    <div class="social-stat-text">Parent Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" id="features" aria-labelledby="features-title">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">✨ Why BrightMinds</div>
+                <h2 class="section-title" id="features-title">Learning That Adapts<br>to Every Child</h2>
+                <p class="section-subtitle">Built with child development experts and powered by adaptive AI, BrightMinds creates a personalized learning journey that grows with your child.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal stagger-1">
+                    <div class="feature-icon feature-icon-1" aria-hidden="true">🧠</div>
+                    <h3 class="feature-title">Adaptive AI Learning</h3>
+                    <p class="feature-text">Our AI engine adjusts difficulty in real-time, ensuring your child is always challenged but never overwhelmed. Every path is unique.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-2">
+                    <div class="feature-icon feature-icon-2" aria-hidden="true">🎮</div>
+                    <h3 class="feature-title">Game-Based Lessons</h3>
+                    <p class="feature-text">Turn fractions into adventures and vocabulary into quests. Our gamified approach keeps kids coming back for more — voluntarily.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-3">
+                    <div class="feature-icon feature-icon-3" aria-hidden="true">👨‍👩‍👧</div>
+                    <h3 class="feature-title">Parent Dashboard</h3>
+                    <p class="feature-text">Track progress, set goals, and get weekly insights — all from your phone. Know exactly where your child excels and needs support.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-4">
+                    <div class="feature-icon feature-icon-4" aria-hidden="true">🏆</div>
+                    <h3 class="feature-title">Reward System</h3>
+                    <p class="feature-text">Motivating badges, streaks, and virtual rewards celebrate every milestone, building confidence and intrinsic motivation.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-5">
+                    <div class="feature-icon feature-icon-5" aria-hidden="true">🔒</div>
+                    <h3 class="feature-title">COPPA Compliant & Safe</h3>
+                    <p class="feature-text">Zero ads, zero data selling, and full COPPA compliance. Your child's safety and privacy are our top priority. Always.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-6">
+                    <div class="feature-icon feature-icon-6" aria-hidden="true">📚</div>
+                    <h3 class="feature-title">Full K-8 Curriculum</h3>
+                    <p class="feature-text">Math, Science, Reading, Writing, and more — all aligned with Common Core and designed by certified educators.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="showcase" id="showcase" aria-labelledby="showcase-title">
+        <div class="container">
+            <div class="showcase-content">
+                <div class="showcase-visual reveal-left">
+                    <div class="showcase-screen">
+                        <div class="screen-header" aria-hidden="true">
+                            <div class="screen-dot dot-red"></div>
+                            <div class="screen-dot dot-yellow"></div>
+                            <div class="screen-dot dot-green"></div>
+                        </div>
+                        <div class="screen-content">
+                            <div class="lesson-card">
+                                <div class="lesson-emoji" style="background: rgba(108, 92, 231, 0.1);" aria-hidden="true">🔢</div>
+                                <div class="lesson-info">
+                                    <h4>Multiplication Adventures</h4>
+                                    <p>Grade 3 • 15 min</p>
+                                </div>
+                                <span class="lesson-status status-complete">Complete ✓</span>
+                            </div>
+                            <div class="lesson-card">
+                                <div class="lesson-emoji" style="background: rgba(0, 206, 201, 0.1);" aria-hidden="true">🌿</div>
+                                <div class="lesson-info">
+                                    <h4>Plant Life Cycles</h4>
+                                    <p>Science • 12 min</p>
+                                </div>
+                                <span class="lesson-status status-progress">In Progress</span>
+                            </div>
+                            <div class="lesson-card">
+                                <div class="lesson-emoji" style="background: rgba(253, 121, 168, 0.1);" aria-hidden="true">📝</div>
+                                <div class="lesson-info">
+                                    <h4>Story Writing Workshop</h4>
+                                    <p>English • 20 min</p>
+                                </div>
+                                <span class="lesson-status status-new">New!</span>
+                            </div>
+                            <div class="lesson-card">
+                                <div class="lesson-emoji" style="background: rgba(253, 203, 110, 0.1);" aria-hidden="true">🌎</div>
+                                <div class="lesson-info">
+                                    <h4>World Geography</h4>
+                                    <p>Social Studies • 18 min</p>
+                                </div>
+                                <span class="lesson-status status-new">New!</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-info reveal-right">
+                    <div class="section-tag">🚀 How It Works</div>
+                    <h2 class="showcase-title" id="showcase-title">A Personal Tutor in Their Pocket</h2>
+                    <p class="showcase-text">BrightMinds creates a customized learning path for each child, adapting in real-time to their pace, strengths, and interests. No two journeys are the same.</p>
+
+                    <ul class="showcase-checklist">
+                        <li>
+                            <span class="check-icon" aria-hidden="true">✓</span>
+                            Quick 5-minute assessment personalizes everything
+                        </li>
+                        <li>
+                            <span class="check-icon" aria-hidden="true">✓</span>
+                            Bite-sized lessons designed for young attention spans
+                        </li>
+                        <li>
+                            <span class="check-icon" aria-hidden="true">✓</span>
+                            Instant feedback helps kids learn from mistakes
+                        </li>
+                        <li>
+                            <span class="check-icon" aria-hidden="true">✓</span>
+                            Weekly parent reports with actionable insights
+                        </li>
+                    </ul>
+
+                    <a href="#pricing" class="btn btn-primary btn-large">Try It Free for 14 Days →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits" id="benefits" aria-labelledby="benefits-title">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">💡 Parent Benefits</div>
+                <h2 class="section-title" id="benefits-title">Why Parents Choose<br>BrightMinds</h2>
+                <p class="section-subtitle">We designed BrightMinds to solve the real challenges modern parents face with their children's education.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card reveal stagger-1">
+                    <div class="benefit-number" aria-hidden="true">01</div>
+                    <div class="benefit-content">
+                        <h3>End Homework Battles</h3>
+                        <p>When learning feels like play, kids actually want to do it. 87% of parents report less friction around study time within the first month.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card reveal stagger-2">
+                    <div class="benefit-number" aria-hidden="true">02</div>
+                    <div class="benefit-content">
+                        <h3>Build Real Confidence</h3>
+                        <p>Our mastery-based approach means kids truly understand concepts before moving on, building deep confidence that transfers to the classroom.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card reveal stagger-3">
+                    <div class="benefit-number" aria-hidden="true">03</div>
+                    <div class="benefit-content">
+                        <h3>Reclaim Your Evenings</h3>
+                        <p>BrightMinds guides your child independently through lessons, giving you peace of mind — and a few extra minutes to yourself.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card reveal stagger-4">
+                    <div class="benefit-number" aria-hidden="true">04</div>
+                    <div class="benefit-content">
+                        <h3>See Measurable Growth</h3>
+                        <p>No more guessing. Our detailed analytics show exactly how your child is progressing, subject by subject, week by week.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">💬 Real Stories</div>
+                <h2 class="section-title" id="testimonials-title">Loved by 50,000+ Families</h2>
+                <p class="section-subtitle">Don't just take our word for it — hear from the parents and kids whose lives have changed with BrightMinds.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal stagger-1">
+                    <div class="testimonial-badge">Verified Parent</div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"My daughter went from dreading math to asking if she could do 'just one more lesson.' Her teacher noticed the improvement within three weeks. I'm genuinely amazed."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar avatar-1" aria-hidden="true">👩</div>
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Mom of Emma, Age 8 • Portland, OR</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal stagger-2">
+                    <div class="testimonial-badge">Verified Parent</div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"As a busy dad, I love the parent dashboard. I can check on my son's progress during lunch and actually have informed conversations about what he's learning."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar avatar-2" aria-hidden="true">👨</div>
+                        <div class="author-info">
+                            <h4>James Rodriguez</h4>
+                            <p>Dad of Lucas, Age 10 • Austin, TX</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal stagger-3">
+                    <div class="testimonial-badge">Verified Parent</div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">⭐⭐⭐⭐⭐</div>
+                    <p class="testimonial-text">"We tried four different apps before BrightMinds. This is the only one both my kids stuck with. The adaptive difficulty is the real magic here — it meets them exactly where they are."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar avatar-3" aria-hidden="true">👩</div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p>Mom of Avi & Zara • Chicago, IL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing" aria-labelledby="pricing-title">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">💎 Simple Pricing</div>
+                <h2 class="section-title" id="pricing-title">Invest in Your Child's Future</h2>
+                <p class="section-subtitle">Every plan includes full access to our curriculum. Choose what fits your family best. Start free, upgrade anytime.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card reveal stagger-1">
+                    <div class="pricing-plan">Starter</div>
+                    <div class="pricing-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">0</span>
+                    </div>
+                    <div class="pricing-subtitle">Free forever — no credit card</div>
+                    <ul class="pricing-features">
+                        <li>1 child profile</li>
+                        <li>5 lessons per week</li>
+                        <li>Basic progress tracking</li>
+                        <li>Core subjects (Math & Reading)</li>
+                        <li>Community support</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary btn-large">Get Started Free</a>
+                </div>
+
+                <div class="pricing-card featured reveal stagger-2">
+                    <div class="pricing-popular">Most Popular</div>
+                    <div class="pricing-plan">Family</div>
+                    <div class="pricing-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">12</span>
+                        <span class="price-period">/mo</span>
+                    </div>
+                    <div class="pricing-subtitle">Billed annually at $144/year</div>
+                    <ul class="pricing-features">
+                        <li>Up to 4 child profiles</li>
+                        <li>Unlimited lessons</li>
+                        <li>Advanced parent dashboard</li>
+                        <li>All subjects & enrichment</li>
+                        <li>Offline mode</li>
+                        <li>Weekly progress reports</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <button class="btn btn-primary btn-large">Start 14-Day Free Trial</button>
+                </div>
+
+                <div class="pricing-card reveal stagger-3">
+                    <div class="pricing-plan">School</div>
+                    <div class="pricing-price">
+                        <span class="price-currency">$</span>
+                        <span class="price-amount">8</span>
+                        <span class="price-period">/seat/mo</span>
+                    </div>
+                    <div class="pricing-subtitle">For classrooms & schools</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited student profiles</li>
+                        <li>Teacher admin dashboard</li>
+                        <li>Classroom analytics</li>
+                        <li>Standards alignment reports</li>
+                        <li>LMS integration</li>
+                        <li>Dedicated account manager</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary btn-large">Contact Sales</a>
+                </div>
+            </div>
+
+            <div class="pricing-guarantee reveal">
+                🛡️ 30-day money-back guarantee • No contracts • Cancel anytime
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">❓ FAQ</div>
+                <h2 class="section-title" id="faq-title">Questions? We've Got Answers</h2>
+                <p class="section-subtitle">Everything you need to know about BrightMinds. Can't find what you're looking for? Contact our support team.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal stagger-1">
+                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                        What age range is BrightMinds designed for?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            BrightMinds is designed for children ages 4-14 (Pre-K through 8th grade). Our adaptive AI technology automatically adjusts content difficulty, visual complexity, and interaction patterns based on your child's age and skill level, ensuring an age-appropriate experience for every learner.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal stagger-2">
+                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                        How much screen time does BrightMinds recommend?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            We recommend 15-30 minutes of focused learning per day. Our built-in session timers help manage screen time, and parents can set custom daily limits through the dashboard. Research shows that short, consistent learning sessions are far more effective than long, sporadic ones.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal stagger-3">
+                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                        Is my child's data safe and private?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Absolutely. BrightMinds is fully COPPA compliant, GDPR compliant, and has received kidSAFE Seal certification. We never sell data, never show ads, and use enterprise-grade encryption. Your child's learning data is used solely to personalize their experience and generate parent reports.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal stagger-4">
+                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                        Can I use BrightMinds on multiple devices?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Yes! BrightMinds works on iPads, Android tablets, smartphones, Chromebooks, and web browsers. Progress syncs seamlessly across all devices, so your child can start a lesson on the tablet and finish it on the computer. Family plan supports up to 4 simultaneous users.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal stagger-5">
+                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                        What subjects does BrightMinds cover?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Our Family plan covers Math, Reading & Writing, Science, Social Studies, Art & Creativity, and Critical Thinking. All content is aligned with Common Core, NGSS, and state standards. We add new content every month and currently have 5,000+ interactive lessons in our library.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal stagger-6">
+                    <button class="faq-question" aria-expanded="false" onclick="toggleFaq(this)">
+                        What if my child doesn't like it? Can I get a refund?
+                        <span class="faq-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            We offer a 14-day free trial (no credit card required) so your child can experience BrightMinds risk-free. If you upgrade to a paid plan and aren't satisfied, our 30-day money-back guarantee means you can get a full refund, no questions asked. We're that confident your family will love it.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" aria-label="Call to action">
+        <div class="container">
+            <div class="cta-card reveal-scale">
+                <div class="cta-content">
+                    <h2 class="cta-title">Give Your Child the Gift of<br>Loving to Learn</h2>
+                    <p class="cta-subtitle">Join 50,000+ families who've transformed their children's relationship with education. Start your free trial today — no credit card needed.</p>
+                    <div class="cta-buttons">
+                        <button class="cta-btn-white">Start Free 14-Day Trial ✨</button>
+                        <a href="#showcase" class="cta-btn-outline">Watch Demo</a>
+                    </div>
+                    <p class="cta-note">Free forever plan available • No credit card required • Cancel anytime</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" aria-label="BrightMinds home">
+                        <div class="logo-icon" aria-hidden="true">✦</div>
+                        BrightMinds
+                    </a>
+                    <p>Transforming screen time into learning time for children ages 4-14. Trusted by 50,000+ families across 150 countries.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                        <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📸</a>
+                        <a href="#" class="social-link" aria-label="YouTube">🎬</a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Curriculum</a></li>
+                        <li><a href="#">For Schools</a></li>
+                        <li><a href="#">Parent App</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Educators</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Safety Center</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">System Status</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 BrightMinds Education, Inc. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">COPPA Notice</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll indicator
+        function updateScrollIndicator() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('scrollIndicator').style.width = scrollPercent + '%';
+        }
+
+        // Navbar scroll effect
+        function handleNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // Scroll reveal
+        function handleScrollReveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            const windowHeight = window.innerHeight;
+
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileToggle.addEventListener('click', function() {
+            this.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !expanded);
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        function closeMobileMenu() {
+            mobileToggle.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        // FAQ toggle
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            const isOpen = faqItem.classList.contains('open');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('open');
+                item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            });
+
+            // Open clicked item if it was closed
+            if (!isOpen) {
+                faqItem.classList.add('open');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // Counter animation for stats
+        function animateCounter(element, target, suffix = '') {
+            let current = 0;
+            const increment = target / 60;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString() + suffix;
+            }, 16);
+        }
+
+        // Initialize counter animations when visible
+        let countersAnimated = false;
+        function checkCounters() {
+            if (countersAnimated) return;
+            const stat = document.getElementById('stat1');
+            if (stat) {
+                const rect = stat.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    countersAnimated = true;
+                    animateCounter(stat, 50, 'K+');
+                }
+            }
+        }
+
+        // Parallax for ambient orbs
+        function handleParallax() {
+            const scrollY = window.scrollY;
+            const orbs = document.querySelectorAll('.ambient-orb');
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.02;
+                orb.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        }
+
+        // Smooth hover tilt effect for cards
+        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card, .benefit-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            updateScrollIndicator();
+            handleNavbarScroll();
+            handleScrollReveal();
+            checkCounters();
+            handleParallax();
+        }, { passive: true });
+
+        // Initial calls
+        handleScrollReveal();
+        checkCounters();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const navbarHeight = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Keyboard accessibility for FAQ
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFaq(button);
+                }
+            });
+        });
+
+        // Add ripple effect to buttons
+        document.querySelectorAll('.btn, .cta-btn-white').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255,255,255,0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: rippleEffect 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple keyframe dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleEffect {
+                to { transform: scale(4); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
