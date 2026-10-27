@@ -1,262 +1,3086 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#6C5CE7" />
-<title>BrightMinds — Learning Kids Actually Love</title>
-<meta name="description" content="The AI-powered learning platform that turns screen time into skill time. Trusted by 50,000+ families worldwide. Try free for 14 days." />
-<meta name="keywords" content="kids education, online learning, adaptive learning, K-8 curriculum, parent dashboard, safe for kids, COPPA compliant" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrightMinds — Where Learning Becomes an Adventure</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@latest/font/lucide.min.css">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Open Graph -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="BrightMinds — Learning Kids Actually Love" />
-<meta property="og:description" content="The AI-powered learning platform that turns screen time into skill time." />
-<meta property="og:image" content="https://via.placeholder.com/1200x630/6C5CE7/FFFFFF?text=BrightMinds" />
+        :root {
+            --primary: #6C5CE7;
+            --primary-light: #A29BFE;
+            --primary-dark: #5A4BD1;
+            --primary-50: rgba(108, 92, 231, 0.05);
+            --primary-100: rgba(108, 92, 231, 0.1);
+            --primary-200: rgba(108, 92, 231, 0.2);
+            --secondary: #00CEC9;
+            --secondary-dark: #00B5B0;
+            --accent: #FD79A8;
+            --accent-warm: #FDCB6E;
+            --success: #00B894;
+            --warning: #E17055;
+            --bg-primary: #FAFBFF;
+            --bg-secondary: #F0F0FF;
+            --bg-tertiary: #E8E7FF;
+            --text-primary: #16162a;
+            --text-secondary: #4A4A6A;
+            --text-muted: #8E8EA0;
+            --white: #FFFFFF;
+            --glass-bg: rgba(255, 255, 255, 0.72);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-shadow: 0 8px 32px rgba(108, 92, 231, 0.08);
+            --shadow-xs: 0 1px 3px rgba(16, 22, 42, 0.04);
+            --shadow-sm: 0 2px 8px rgba(16, 22, 42, 0.06);
+            --shadow-md: 0 8px 30px rgba(16, 22, 42, 0.08);
+            --shadow-lg: 0 20px 60px rgba(16, 22, 42, 0.1);
+            --shadow-xl: 0 30px 80px rgba(16, 22, 42, 0.12);
+            --shadow-primary: 0 8px 30px rgba(108, 92, 231, 0.35);
+            --radius-xs: 6px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-2xl: 32px;
+            --radius-full: 9999px;
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="BrightMinds — Learning Kids Actually Love" />
-<meta name="twitter:description" content="The AI-powered learning platform that turns screen time into skill time." />
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
 
-<!-- Favicon -->
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>" />
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet" />
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
 
-<style>
-:root {
-  --primary: #6C5CE7;
-  --primary-light: #A29BFE;
-  --primary-dark: #5A4BD1;
-  --secondary: #00CEC9;
-  --accent: #FD79A8;
-  --accent-warm: #FDCB6E;
-  --success: #00B894;
-  --text-primary: #16162a;
-  --text-secondary: #4a4a68;
-  --text-tertiary: #7a7a95;
-  --bg-primary: #FAFBFF;
-  --bg-secondary: #F3F4FB;
-  --white: #ffffff;
-  --border: rgba(108, 92, 231, 0.1);
-  --shadow-sm: 0 2px 8px rgba(16, 16, 42, 0.04);
-  --shadow-md: 0 8px 24px rgba(16, 16, 42, 0.08);
-  --shadow-lg: 0 20px 48px rgba(16, 16, 42, 0.12);
-  --shadow-xl: 0 32px 80px rgba(16, 16, 42, 0.16);
-  --gradient-primary: linear-gradient(135deg, #6C5CE7 0%, #A29BFE 100%);
-  --gradient-warm: linear-gradient(135deg, #FD79A8 0%, #FDCB6E 100%);
-  --gradient-cool: linear-gradient(135deg, #6C5CE7 0%, #00CEC9 100%);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
+        img {
+            max-width: 100%;
+            display: block;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .container-tight {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--text-primary);
-  background: var(--bg-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
+        /* ========== SVG ICONS ========== */
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
 
-h1, h2, h3, h4, h5, h6 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: var(--text-primary); }
+        .icon svg {
+            width: 100%;
+            height: 100%;
+        }
 
-a { color: inherit; text-decoration: none; }
-button { font-family: inherit; cursor: pointer; border: none; background: none; }
-img, svg { max-width: 100%; display: block; }
+        /* ========== AMBIENT BG ========== */
+        .ambient-wrap {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: 4px; }
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.18;
+            will-change: transform;
+        }
 
-::selection { background: var(--primary); color: white; }
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary-light);
+            top: -200px;
+            right: -200px;
+            animation: orbDrift1 25s ease-in-out infinite;
+        }
 
-/* Ambient background orbs */
-.ambient-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
-.orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; animation: float 20s ease-in-out infinite; }
-.orb-1 { width: 500px; height: 500px; background: var(--primary); top: -200px; left: -100px; }
-.orb-2 { width: 400px; height: 400px; background: var(--secondary); top: 40%; right: -150px; animation-delay: -7s; }
-.orb-3 { width: 450px; height: 450px; background: var(--accent); bottom: -200px; left: 30%; animation-delay: -14s; }
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: 10%;
+            left: -200px;
+            animation: orbDrift2 30s ease-in-out infinite;
+        }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
-}
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: 45%;
+            right: -100px;
+            animation: orbDrift3 22s ease-in-out infinite;
+        }
 
-/* Scroll progress */
-.scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--gradient-primary); z-index: 1000; width: 0%; transition: width 0.1s linear; }
+        @keyframes orbDrift1 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-40px, 60px); }
+            66% { transform: translate(30px, -40px); }
+        }
 
-/* Container */
-.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        @keyframes orbDrift2 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(50px, -30px); }
+            66% { transform: translate(-30px, 50px); }
+        }
 
-/* Buttons */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; border-radius: 12px; font-weight: 600; font-size: 15px; transition: all 0.3s var(--ease-out); white-space: nowrap; }
-.btn-primary { background: var(--gradient-primary); color: white; box-shadow: 0 8px 24px rgba(108, 92, 231, 0.3); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(108, 92, 231, 0.4); }
-.btn-secondary { background: white; color: var(--text-primary); border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
-.btn-secondary:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
-.btn-large { padding: 18px 36px; font-size: 16px; border-radius: 14px; }
+        @keyframes orbDrift3 {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(-35px, -45px); }
+            66% { transform: translate(45px, 35px); }
+        }
 
-/* Navbar */
-.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: all 0.3s var(--ease-out); }
-.navbar.scrolled { background: rgba(250, 251, 255, 0.8); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--border); padding: 14px 0; }
-.nav-wrapper { display: flex; align-items: center; justify-content: space-between; }
-.logo { display: flex; align-items: center; gap: 10px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 20px; }
-.logo-mark { width: 36px; height: 36px; background: var(--gradient-primary); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
-.nav-links { display: flex; align-items: center; gap: 36px; }
-.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-secondary); transition: color 0.2s; }
-.nav-links a:hover { color: var(--primary); }
-.nav-cta { display: flex; align-items: center; gap: 12px; }
-.mobile-toggle { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 10px; color: var(--text-primary); }
+        /* ========== SCROLL REVEAL ========== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+        }
 
-/* Mobile menu */
-.mobile-menu { position: fixed; inset: 0; background: rgba(250, 251, 255, 0.98); backdrop-filter: blur(20px); z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-.mobile-menu.active { opacity: 1; pointer-events: auto; }
-.mobile-menu a { font-size: 24px; font-weight: 700; color: var(--text-primary); }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* Hero */
-.hero { padding: 160px 0 100px; position: relative; }
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: white; border: 1px solid var(--border); border-radius: 100px; font-size: 13px; font-weight: 600; color: var(--primary); box-shadow: var(--shadow-sm); margin-bottom: 24px; }
-.hero-badge-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
-@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-.hero h1 { font-size: clamp(40px, 6vw, 68px); margin-bottom: 24px; }
-.hero h1 .highlight { background: var(--gradient-cool); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero-subtitle { font-size: 19px; color: var(--text-secondary); margin-bottom: 36px; max-width: 540px; }
-.hero-actions { display: flex; gap: 16px; margin-bottom: 36px; flex-wrap: wrap; }
-.hero-trust { display: flex; align-items: center; gap: 24px; font-size: 13px; color: var(--text-tertiary); }
-.trust-avatars { display: flex; }
-.trust-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid white; background: var(--gradient-primary); margin-left: -8px; display: flex; align-items: center; justify-content: center; color: white; }
-.trust-avatar:first-child { margin-left: 0; }
-.trust-avatar:nth-child(2) { background: var(--gradient-warm); }
-.trust-avatar:nth-child(3) { background: var(--gradient-cool); }
-.trust-avatar:nth-child(4) { background: linear-gradient(135deg, var(--secondary), var(--primary-light)); }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+        }
 
-/* Hero visual */
-.hero-visual { position: relative; }
-.hero-card { background: white; border-radius: 24px; padding: 32px; box-shadow: var(--shadow-xl); position: relative; }
-.hero-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
-.hero-card-avatar { width: 48px; height: 48px; background: var(--gradient-warm); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
-.hero-card-info h4 { font-size: 15px; }
-.hero-card-info p { font-size: 13px; color: var(--text-tertiary); }
-.progress-bar { height: 8px; background: var(--bg-secondary); border-radius: 100px; overflow: hidden; margin-bottom: 24px; }
-.progress-fill { height: 100%; width: 72%; background: var(--gradient-cool); border-radius: 100px; animation: progressGrow 2s var(--ease-out); }
-@keyframes progressGrow { from { width: 0; } to { width: 72%; } }
-.subject-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.subject-card { padding: 16px; background: var(--bg-secondary); border-radius: 14px; display: flex; align-items: center; gap: 12px; transition: transform 0.3s; }
-.subject-card:hover { transform: translateY(-2px); }
-.subject-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
-.subject-icon.math { background: var(--primary); }
-.subject-icon.science { background: var(--secondary); }
-.subject-icon.reading { background: var(--accent); }
-.subject-icon.art { background: var(--accent-warm); }
-.subject-info h5 { font-size: 13px; }
-.subject-info p { font-size: 11px; color: var(--text-tertiary); }
-.achievement { display: flex; align-items: center; gap: 12px; padding: 14px; background: linear-gradient(135deg, rgba(253, 203, 110, 0.1), rgba(253, 121, 168, 0.1)); border-radius: 12px; }
-.achievement-icon { width: 36px; height: 36px; background: var(--gradient-warm); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; }
-.achievement-text { font-size: 13px; font-weight: 600; }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-.floating-badge { position: absolute; background: white; padding: 12px 16px; border-radius: 14px; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; }
-.floating-badge-1 { top: 20px; right: -20px; animation: floatBadge 4s ease-in-out infinite; }
-.floating-badge-2 { bottom: 40px; left: -30px; animation: floatBadge 4s ease-in-out infinite; animation-delay: -2s; }
-@keyframes floatBadge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-.badge-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+        }
 
-/* Social Proof */
-.social-proof { padding: 80px 0 60px; }
-.social-proof-label { text-align: center; font-size: 13px; font-weight: 600; color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 32px; }
-.logos-grid { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; opacity: 0.6; margin-bottom: 60px; }
-.logo-item { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; color: var(--text-secondary); }
-.metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-.metric { text-align: center; }
-.metric-value { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 44px; font-weight: 800; background: var(--gradient-cool); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1; margin-bottom: 8px; }
-.metric-label { font-size: 14px; color: var(--text-secondary); font-weight: 500; }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
 
-/* Section */
-.section { padding: 100px 0; }
-.section-header { text-align: center; max-width: 680px; margin: 0 auto 64px; }
-.section-badge { display: inline-block; padding: 6px 14px; background: rgba(108, 92, 231, 0.1); color: var(--primary); border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 16px; }
-.section-title { font-size: clamp(32px, 4vw, 48px); margin-bottom: 16px; }
-.section-subtitle { font-size: 18px; color: var(--text-secondary); }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+        }
 
-/* Features */
-.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.feature-card { background: white; padding: 32px; border-radius: 20px; border: 1px solid var(--border); transition: all 0.4s var(--ease-out); position: relative; overflow: hidden; }
-.feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary-light); }
-.feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-primary); transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease-out); }
-.feature-card:hover::before { transform: scaleX(1); }
-.feature-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 20px; }
-.feature-icon.c1 { background: var(--gradient-primary); }
-.feature-icon.c2 { background: var(--gradient-warm); }
-.feature-icon.c3 { background: var(--gradient-cool); }
-.feature-icon.c4 { background: linear-gradient(135deg, var(--accent), var(--primary)); }
-.feature-icon.c5 { background: linear-gradient(135deg, var(--success), var(--secondary)); }
-.feature-icon.c6 { background: linear-gradient(135deg, var(--accent-warm), var(--accent)); }
-.feature-card h3 { font-size: 20px; margin-bottom: 12px; }
-.feature-card p { color: var(--text-secondary); font-size: 15px; }
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
 
-/* Showcase */
-.showcase { padding: 100px 0; background: var(--bg-secondary); border-radius: 32px; margin: 0 24px; }
-.showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1152px; margin: 0 auto; padding: 0 24px; }
-.showcase-content h2 { font-size: 40px; margin-bottom: 20px; }
-.showcase-content p { color: var(--text-secondary); margin-bottom: 24px; font-size: 17px; }
-.showcase-list { list-style: none; margin-bottom: 32px; }
-.showcase-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; color: var(--text-secondary); }
-.showcase-list svg { color: var(--success); flex-shrink: 0; margin-top: 3px; }
-.showcase-visual { background: white; border-radius: 20px; padding: 24px; box-shadow: var(--shadow-xl); }
-.browser-chrome { display: flex; align-items: center; gap: 6px; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
-.browser-chrome span { width: 12px; height: 12px; border-radius: 50%; background: #ddd; }
-.browser-chrome span:nth-child(1) { background: #ff5f57; }
-.browser-chrome span:nth-child(2) { background: #ffbd2e; }
-.browser-chrome span:nth-child(3) { background: #28ca42; }
-.lesson-item { display: flex; align-items: center; gap: 14px; padding: 14px; background: var(--bg-secondary); border-radius: 12px; margin-bottom: 10px; }
-.lesson-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--gradient-primary); display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
-.lesson-info { flex: 1; }
-.lesson-info h5 { font-size: 14px; margin-bottom: 2px; }
-.lesson-info p { font-size: 12px; color: var(--text-tertiary); margin: 0; }
-.lesson-check { width: 24px; height: 24px; border-radius: 50%; background: var(--success); display: flex; align-items: center; justify-content: center; color: white; }
+        .delay-1 { transition-delay: 0.08s; }
+        .delay-2 { transition-delay: 0.16s; }
+        .delay-3 { transition-delay: 0.24s; }
+        .delay-4 { transition-delay: 0.32s; }
+        .delay-5 { transition-delay: 0.40s; }
+        .delay-6 { transition-delay: 0.48s; }
 
-/* Benefits */
-.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.benefit-card { padding: 36px; background: white; border-radius: 20px; border: 1px solid var(--border); display: flex; gap: 20px; transition: all 0.3s; }
-.benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.benefit-number { width: 48px; height: 48px; border-radius: 12px; background: var(--gradient-primary); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 18px; flex-shrink: 0; }
-.benefit-content h3 { font-size: 20px; margin-bottom: 8px; }
-.benefit-content p { color: var(--text-secondary); font-size: 15px; }
+        /* ========== SCROLL PROGRESS ========== */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 10001;
+            width: 0%;
+            transition: none;
+        }
 
-/* Testimonials */
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.testimonial-card { background: white; padding: 32px; border-radius: 20px; border: 1px solid var(--border); transition: all 0.3s; }
-.testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
-.testimonial-stars { display: flex; gap: 2px; color: var(--accent-warm); margin-bottom: 16px; }
-.testimonial-text { color: var(--text-secondary); margin-bottom: 24px; font-size: 15px; line-height: 1.7; }
-.testimonial-author { display: flex; align-items: center; gap: 12px; }
-.testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
-.ta1 { background: var(--gradient-primary); }
-.ta2 { background: var(--gradient-warm); }
-.ta3 { background: var(--gradient-cool); }
-.testimonial-info h5 { font-size: 14px; margin-bottom: 2px; }
-.testimonial-info p { font-size: 12px; color: var(--text-tertiary); }
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s var(--ease-out-expo);
+            white-space: nowrap;
+        }
 
-/* Pricing */
-.pricing-toggle { display: flex; justify-content: center; align-items: center; gap: 16px; margin-bottom: 48px; }
-.toggle-label { font-size: 15px; font-weight: 500; color: var(--text-secondary); }
-.toggle-label.active { color: var(--text-primary); font-weight: 600; }
-.toggle-switch { width: 52px; height: 28px; background: var(--primary); border-radius: 100px; position: relative; cursor: pointer; transition: background 0.3s; }
-.toggle-switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; background: white; border-radius: 50%; transition: transform 0.3s var(--ease-spring); }
-.toggle-switch.annual::after { transform: translateX(24px); }
-.toggle-badge { background: var(--accent); color: white; padding: 4px 10px; border-radius: 100px; font-size: 12px; font-weight: 600; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.pricing-card { background: white; padding: 40px 32px; border-radius: 24px; border: 2px solid var(--border); position: relative; transition: all 0.3s; }
-.pricing-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-.pricing-card.popular { border-color: var(--primary); transform: scale(1.03); }
-.pricing-card.popular:hover { transform: scale(1.03) translateY(-6px); }
-.popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-primary); color: white; padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 700; }
-.pricing-tier { font-size: 14px; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-.pricing-price { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 48px; font-weight: 800; line-height: 
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .btn:hover::after {
+            transform: translateX(100%);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.45);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--text-primary);
+            border: 1.5px solid rgba(108, 92, 231, 0.15);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+            padding: 13px 20px;
+        }
+
+        .btn-ghost:hover {
+            color: var(--primary);
+            background: var(--primary-50);
+        }
+
+        .btn-lg {
+            padding: 16px 36px;
+            font-size: 1rem;
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+            transition: transform 0.3s var(--ease-spring);
+        }
+
+        .logo:hover .logo-mark {
+            transform: rotate(-8deg) scale(1.05);
+        }
+
+        .logo-mark svg {
+            width: 20px;
+            height: 20px;
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            transition: all 0.25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: var(--primary-50);
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            background: none;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 22px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .mobile-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-toggle.open span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .mobile-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+
+        .mobile-menu.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            transition: all 0.25s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--primary-100);
+            color: var(--primary);
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 100px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 14px 5px 5px;
+            background: var(--white);
+            border: 1px solid rgba(108, 92, 231, 0.12);
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-xs);
+        }
+
+        .eyebrow-badge {
+            padding: 4px 10px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius-full);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .hero-title {
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 52px;
+            flex-wrap: wrap;
+        }
+
+        .hero-proof {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-proof-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .proof-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .proof-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-mockup {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .mockup-card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+        }
+
+        .mockup-header {
+            padding: 20px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mockup-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+        }
+
+        .mockup-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .mockup-avatar svg {
+            width: 22px;
+            height: 22px;
+            color: white;
+        }
+
+        .mockup-user-name {
+            font-weight: 700;
+            font-size: 0.92rem;
+        }
+
+        .mockup-user-level {
+            font-size: 0.72rem;
+            opacity: 0.8;
+        }
+
+        .mockup-streak {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-full);
+            padding: 6px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mockup-body {
+            padding: 24px;
+        }
+
+        .mockup-progress-section {
+            margin-bottom: 24px;
+        }
+
+        .mockup-progress-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .mockup-progress-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .mockup-progress-percent {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .mockup-progress-bar {
+            height: 8px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+        }
+
+        .mockup-progress-fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 1.5s var(--ease-out-expo);
+        }
+
+        .mockup-progress-fill.animated {
+            width: 73%;
+        }
+
+        .mockup-subjects {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .subject-card {
+            background: var(--bg-primary);
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            border-radius: var(--radius-lg);
+            padding: 16px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .subject-card:hover {
+            border-color: var(--primary-200);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
+        }
+
+        .subject-icon-wrap {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .subject-icon-wrap svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .subject-icon-math { background: rgba(108, 92, 231, 0.1); color: var(--primary); }
+        .subject-icon-science { background: rgba(0, 206, 201, 0.1); color: var(--secondary); }
+        .subject-icon-reading { background: rgba(253, 121, 168, 0.1); color: var(--accent); }
+        .subject-icon-art { background: rgba(253, 203, 110, 0.15); color: #E17055; }
+
+        .subject-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .subject-meta {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .mockup-achievement {
+            background: linear-gradient(135deg, rgba(253, 203, 110, 0.1), rgba(253, 121, 168, 0.08));
+            border: 1px solid rgba(253, 203, 110, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .achievement-icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-warm), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .achievement-icon-wrap svg {
+            width: 20px;
+            height: 20px;
+            color: white;
+        }
+
+        .achievement-text {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .achievement-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Floating badges */
+        .float-badge {
+            position: absolute;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 12px 18px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 2;
+            animation: floatY 5s ease-in-out infinite;
+        }
+
+        .float-badge-1 {
+            top: 30px;
+            right: -24px;
+            animation-delay: 0s;
+        }
+
+        .float-badge-2 {
+            bottom: 60px;
+            left: -30px;
+            animation-delay: -2.5s;
+        }
+
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .float-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .float-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .float-icon-green { background: rgba(0, 184, 148, 0.1); color: var(--success); }
+        .float-icon-purple { background: var(--primary-100); color: var(--primary); }
+
+        .float-text-main {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .float-text-sub {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== SOCIAL PROOF BAR ========== */
+        .social-proof {
+            padding: 72px 0;
+            border-top: 1px solid rgba(108, 92, 231, 0.04);
+        }
+
+        .sp-label {
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 36px;
+        }
+
+        .sp-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 52px;
+            flex-wrap: wrap;
+            margin-bottom: 52px;
+        }
+
+        .sp-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            opacity: 0.45;
+            transition: opacity 0.3s ease;
+        }
+
+        .sp-logo:hover { opacity: 0.75; }
+
+        .sp-logo svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .sp-logo-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .sp-metrics {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 64px;
+            flex-wrap: wrap;
+        }
+
+        .sp-metric {
+            text-align: center;
+        }
+
+        .sp-metric-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .sp-metric-text {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ========== SECTION HEADERS ========== */
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 72px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 14px;
+            background: var(--primary-50);
+            border: 1px solid var(--primary-100);
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 20px;
+        }
+
+        .section-tag svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== FEATURES ========== */
+        .features {
+            padding: 120px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 36px 28px;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(108, 92, 231, 0.1);
+        }
+
+        .feature-card:hover::after {
+            opacity: 1;
+        }
+
+        .feature-icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s var(--ease-spring);
+        }
+
+        .feature-card:hover .feature-icon-wrap {
+            transform: scale(1.1) rotate(-4deg);
+        }
+
+        .feature-icon-wrap svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .fi-1 { background: var(--primary-100); color: var(--primary); }
+        .fi-2 { background: rgba(0, 206, 201, 0.12); color: var(--secondary-dark); }
+        .fi-3 { background: rgba(253, 121, 168, 0.12); color: var(--accent); }
+        .fi-4 { background: rgba(253, 203, 110, 0.15); color: var(--warning); }
+        .fi-5 { background: rgba(0, 184, 148, 0.12); color: var(--success); }
+        .fi-6 { background: rgba(162, 155, 254, 0.15); color: var(--primary-light); }
+
+        .feature-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== PRODUCT SHOWCASE ========== */
+        .showcase {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .showcase-screen {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+        }
+
+        .screen-chrome {
+            padding: 14px 18px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .screen-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .screen-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-r { background: #FF6B6B; }
+        .dot-y { background: #FFEAA7; }
+        .dot-g { background: #55EFC4; }
+
+        .screen-url {
+            flex: 1;
+            height: 28px;
+            background: var(--white);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            padding: 0 12px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            gap: 6px;
+        }
+
+        .screen-url svg {
+            width: 12px;
+            height: 12px;
+            color: var(--success);
+        }
+
+        .screen-body {
+            padding: 28px;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg-primary);
+            border: 1px solid rgba(108, 92, 231, 0.04);
+            border-radius: var(--radius-lg);
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .lesson-item:hover {
+            border-color: var(--primary-200);
+            transform: translateX(4px);
+        }
+
+        .lesson-icon-wrap {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .lesson-icon-wrap svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .li-purple { background: var(--primary-100); color: var(--primary); }
+        .li-teal { background: rgba(0, 206, 201, 0.1); color: var(--secondary-dark); }
+        .li-pink { background: rgba(253, 121, 168, 0.1); color: var(--accent); }
+        .li-amber { background: rgba(253, 203, 110, 0.15); color: var(--warning); }
+
+        .lesson-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lesson-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .lesson-meta {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .lesson-status {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .status-done { background: rgba(0, 184, 148, 0.1); color: var(--success); }
+        .status-active { background: var(--primary-100); color: var(--primary); }
+        .status-new { background: rgba(253, 203, 110, 0.15); color: var(--warning); }
+
+        .lesson-status svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .showcase-info .section-tag {
+            margin-bottom: 16px;
+        }
+
+        .showcase-title {
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .showcase-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .check-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 40px;
+        }
+
+        .check-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .check-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .check-circle svg {
+            width: 12px;
+            height: 12px;
+            color: var(--white);
+        }
+
+        /* ========== BENEFITS ========== */
+        .benefits {
+            padding: 120px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(108, 92, 231, 0.1);
+        }
+
+        .benefit-num {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(180deg, var(--primary-light), rgba(162, 155, 254, 0.2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            flex-shrink: 0;
+            width: 56px;
+        }
+
+        .benefit-body h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .benefit-body p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonials {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tc-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-50);
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tc-badge svg {
+            width: 10px;
+            height: 10px;
+        }
+
+        .tc-stars {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 16px;
+        }
+
+        .tc-stars svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-warm);
+            fill: var(--accent-warm);
+        }
+
+        .tc-quote {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            flex: 1;
+        }
+
+        .tc-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid rgba(108, 92, 231, 0.06);
+            padding-top: 20px;
+        }
+
+        .tc-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .tc-avatar svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .tc-av-1 { background: linear-gradient(135deg, #FFD3E0, #FFA7C4); color: #E84393; }
+        .tc-av-2 { background: linear-gradient(135deg, #C3E8FF, #7EC8F8); color: #0984E3; }
+        .tc-av-3 { background: linear-gradient(135deg, #D5F5E3, #82E0AA); color: #00B894; }
+
+        .tc-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .tc-role {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== PRICING ========== */
+        .pricing {
+            padding: 120px 0;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 52px;
+        }
+
+        .pricing-toggle-label {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .pricing-toggle-label.active {
+            color: var(--text-primary);
+        }
+
+        .toggle-switch {
+            width: 52px;
+            height: 28px;
+            background: var(--primary-200);
+            border-radius: var(--radius-full);
+            position: relative;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .toggle-switch.active {
+            background: var(--primary);
+        }
+
+        .toggle-knob {
+            width: 22px;
+            height: 22px;
+            background: var(--white);
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            transition: transform 0.3s var(--ease-spring);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .toggle-switch.active .toggle-knob {
+            transform: translateX(24px);
+        }
+
+        .pricing-save {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--success);
+            background: rgba(0, 184, 148, 0.1);
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 40px 32px;
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            transition: all 0.4s var(--ease-out-expo);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            border: none;
+            box-shadow: var(--shadow-xl);
+            transform: scale(1.04);
+            z-index: 2;
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.04) translateY(-8px);
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -13px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+            color: var(--white);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 5px 18px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            box-shadow: 0 4px 12px rgba(253, 121, 168, 0.3);
+        }
+
+        .pc-plan {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .pc-price {
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+            margin-bottom: 4px;
+        }
+
+        .pc-currency {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .pc-amount {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .pc-period {
+            font-size: 0.85rem;
+            opacity: 0.5;
+            font-weight: 500;
+            margin-left: 2px;
+        }
+
+        .pc-subtitle {
+            font-size: 0.82rem;
+            opacity: 0.5;
+            margin-bottom: 28px;
+        }
+
+        .pc-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .pc-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        .pc-check {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .pc-check svg {
+            width: 10px;
+            height: 10px;
+        }
+
+        .pricing-card:not(.popular) .pc-check {
+            background: var(--primary-100);
+            color: var(--primary);
+        }
+
+        .pricing-card.popular .pc-check {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+        }
+
+        .pricing-card.popular .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.popular .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .pricing-guarantee {
+            text-align: center;
+            margin-top: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .pricing-guarantee svg {
+            width: 16px;
+            height: 16px;
+            color: var(--success);
+        }
+
+        /* ========== FAQ ========== */
+        .faq {
+            padding: 120px 0;
+            background: var(--bg-secondary);
+        }
+
+        .faq-list {
+            max-width: 740px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(108, 92, 231, 0.06);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary-200);
+        }
+
+        .faq-item.open {
+            box-shadow: var(--shadow-sm);
+            border-color: var(--primary-200);
+        }
+
+        .faq-q {
+            width: 100%;
+            padding: 22px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+            transition: color 0.3s ease;
+        }
+
+        .faq-q:hover {
+            color: var(--primary);
+        }
+
+        .faq-toggle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.35s var(--ease-out-expo);
+        }
+
+        .faq-toggle svg {
+            width: 14px;
+            height: 14px;
+            color: var(--primary);
+            transition: transform 0.35s var(--ease-out-expo);
+        }
+
+        .faq-item.open .faq-toggle {
+            background: var(--primary);
+        }
+
+        .faq-item.open .faq-toggle svg {
+            color: var(--white);
+            transform: rotate(45deg);
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s var(--ease-out-expo);
+        }
+
+        .faq-item.open .faq-a {
+            max-height: 300px;
+        }
+
+        .faq-a-inner {
+            padding: 0 24px 22px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ========== FINAL CTA ========== */
+        .final-cta {
+            padding: 120px 0;
+        }
+
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius-2xl);
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.04);
+            pointer-events: none;
+        }
+
+        .cta-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -15%;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.03);
+            pointer-events: none;
+        }
+
+        .cta-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.78);
+            margin-bottom: 40px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* Email capture form */
+        .cta-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 520px;
+            margin: 0 auto 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-input {
+            flex: 1;
+            min-width: 220px;
+            padding: 16px 22px;
+            border-radius: var(--radius-full);
+            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(8px);
+            color: var(--white);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .cta-input:focus {
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .cta-submit {
+            padding: 16px 32px;
+            border-radius: var(--radius-full);
+            background: var(--white);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.35s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .cta-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        .cta-submit svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .cta-note {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cta-note span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .cta-note svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        .cta-success {
+            display: none;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 20px;
+            animation: fadeInUp 0.5s var(--ease-out-expo);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            padding: 80px 0 40px;
+            background: var(--text-primary);
+            color: rgba(255,255,255,0.65);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 56px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo-mark {
+            background: linear-gradient(135deg, var(--primary-light), var(--secondary));
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            max-width: 280px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-sm);
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .social-btn svg {
+            width: 16px;
+            height: 16px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .social-btn:hover svg {
+            color: var(--white);
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.78rem;
+            opacity: 0.4;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal a {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 60px;
+            }
+
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-actions { justify-content: center; }
+            .hero-proof { justify-content: center; }
+
+            .hero-visual { max-width: 480px; margin: 0 auto; }
+
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .showcase-grid { grid-template-columns: 1fr; gap: 48px; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-card:last-child { grid-column: span 2; max-width: 420px; margin: 0 auto; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-toggle { display: flex; }
+            .mobile-menu { display: flex; }
+
+            .hero { padding: 120px 0 60px; }
+
+            .features-grid { grid-template-columns: 1fr; }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-card.popular { transform: none; }
+            .pricing-card.popular:hover { transform: translateY(-8px); }
+            .pricing-card:last-child { grid-column: 1; max-width: 100%; }
+
+            .cta-card { padding: 56px 28px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+
+            .float-badge { display: none; }
+            .sp-logos { gap: 28px; }
+            .sp-metrics { gap: 36px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn { width: 100%; }
+            .hero-proof { flex-direction: column; gap: 12px; }
+            .hero-proof-item { text-align: center; }
+
+            .benefit-card { flex-direction: column; text-align: center; }
+
+            .cta-form { flex-direction: column; }
+            .cta-input { width: 100%; min-width: unset; }
+            .cta-submit { width: 100%; justify-content: center; }
+        }
+
+        /* ========== ACCESSIBILITY ========== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal, .reveal-left, .reveal-right, .reveal-scale {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-wrap" aria-hidden="true">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+        <a href="#features" onclick="closeMobile()">Features</a>
+        <a href="#showcase" onclick="closeMobile()">How It Works</a>
+        <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+        <a href="#pricing" onclick="closeMobile()">Pricing</a>
+        <a href="#faq" onclick="closeMobile()">FAQ</a>
+        <a href="#cta" class="btn btn-primary" onclick="closeMobile()">Start Free Trial</a>
+    </nav>
+
+    <!-- ========== NAVBAR ========== -->
+    <header class="navbar" id="navbar" role="banner">
+        <div class="container nav-inner">
+            <a href="#" class="logo" aria-label="BrightMinds home">
+                <div class="logo-mark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                </div>
+                BrightMinds
+            </a>
+
+            <ul class="nav-links" role="navigation">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#showcase">How It Works</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="#" class="btn btn-ghost">Log In</a>
+                <a href="#cta" class="btn btn-primary">Start Free Trial</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-eyebrow reveal delay-1">
+                        <span class="eyebrow-badge">New</span>
+                        Trusted by 50,000+ families worldwide
+                    </div>
+
+                    <h1 class="hero-title reveal delay-2" id="heroTitle">
+                        Turn Screen Time<br>Into <span class="gradient-text">Learning Time</span>
+                    </h1>
+
+                    <p class="hero-desc reveal delay-3">
+                        BrightMinds transforms curiosity into academic confidence through adaptive, game-based lessons that kids genuinely love — and parents trust.
+                    </p>
+
+                    <div class="hero-actions reveal delay-4">
+                        <a href="#cta" class="btn btn-primary btn-lg">
+                            Start 14-Day Free Trial
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="#showcase" class="btn btn-secondary btn-lg">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            See How It Works
+                        </a>
+                    </div>
+
+                    <div class="hero-proof reveal delay-5">
+                        <div class="hero-proof-item">
+                            <div class="proof-number" data-target="50000" data-suffix="K+">50K+</div>
+                            <div class="proof-label">Active Learners</div>
+                        </div>
+                        <div class="hero-proof-item">
+                            <div class="proof-number">4.9 ★</div>
+                            <div class="proof-label">Parent Rating</div>
+                        </div>
+                        <div class="hero-proof-item">
+                            <div class="proof-number">93%</div>
+                            <div class="proof-label">Grade Improvement</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual reveal-right delay-3">
+                    <div class="hero-mockup">
+                        <!-- Float badge 1 -->
+                        <div class="float-badge float-badge-1" aria-hidden="true">
+                            <div class="float-icon float-icon-green">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C6.5 4 8 5.5 8 7.5M18 9h1.5a2.5 2.5 0 0 0 0-5C17.5 4 16 5.5 16 7.5"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                            </div>
+                            <div>
+                                <div class="float-text-main">Achievement!</div>
+                                <div class="float-text-sub">Math Master Level 5</div>
+                            </div>
+                        </div>
+
+                        <!-- Float badge 2 -->
+                        <div class="float-badge float-badge-2" aria-hidden="true">
+                            <div class="float-icon float-icon-purple">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                            </div>
+                            <div>
+                                <div class="float-text-main">+42% Growth</div>
+                                <div class="float-text-sub">This Month</div>
+                            </div>
+                        </div>
+
+                        <div class="mockup-card">
+                            <div class="mockup-header">
+                                <div class="mockup-header-left">
+                                    <div class="mockup-avatar">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                    </div>
+                                    <div>
+                                        <div class="mockup-user-name">Emma's Dashboard</div>
+                                        <div class="mockup-user-level">Grade 3 • Level 12</div>
+                                    </div>
+                                </div>
+                                <div class="mockup-streak">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                                    7 Day Streak
+                                </div>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="mockup-progress-section">
+                                    <div class="mockup-progress-header">
+                                        <span class="mockup-progress-title">Today's Progress</span>
+                                        <span class="mockup-progress-percent">3 of 4 lessons</span>
+                                    </div>
+                                    <div class="mockup-progress-bar">
+                                        <div class="mockup-progress-fill" id="heroProgress" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mockup-subjects">
+                                    <div class="subject-card">
+                                        <div class="subject-icon-wrap subject-icon-math">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h4"/></svg>
+                                        </div>
+                                        <div class="subject-name">Mathematics</div>
+                                        <div class="subject-meta">12 lessons done</div>
+                                    </div>
+                                    <div class="subject-card">
+                                        <div class="subject-icon-wrap subject-icon-science">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16.5h10"/></svg>
+                                        </div>
+                                        <div class="subject-name">Science</div>
+                                        <div class="subject-meta">8 lessons done</div>
+                                    </div>
+                                    <div class="subject-card">
+                                        <div class="subject-icon-wrap subject-icon-reading">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                                        </div>
+                                        <div class="subject-name">Reading</div>
+                                        <div class="subject-meta">15 lessons done</div>
+                                    </div>
+                                    <div class="subject-card">
+                                        <div class="subject-icon-wrap subject-icon-art">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 0 0 8-8 .5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5V8a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1-.5-.5V4.5A.5.5 0 0 0 11 4 8 8 0 1 0 12 20z"/><circle cx="7.5" cy="12.5" r=".5" fill="currentColor"/><circle cx="12" cy="16.5" r=".5" fill="currentColor"/></svg>
+                                        </div>
+                                        <div class="subject-name">Art</div>
+                                        <div class="subject-meta">6 lessons done</div>
+                                    </div>
+                                </div>
+
+                                <div class="mockup-achievement">
+                                    <div class="achievement-icon-wrap">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                                    </div>
+                                    <div>
+                                        <div class="achievement-text">New Badge Unlocked!</div>
+                                        <div class="achievement-sub">Science Explorer — Completed 8 experiments</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SOCIAL PROOF ========== -->
+    <section class="social-proof" aria-label="Trust indicators">
+        <div class="container">
+            <p class="sp-label reveal">Featured & Endorsed By</p>
+
+            <div class="sp-logos reveal delay-1">
+                <div class="sp-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    <span class="sp-logo-text">EdTech Today</span>
+                </div>
+                <div class="sp-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 12 3 12 0v-5"/></svg>
+                    <span class="sp-logo-text">LearnHub</span>
+                </div>
+                <div class="sp-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span class="sp-logo-text">KidSafe+</span>
+                </div>
+                <div class="sp-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    <span class="sp-logo-text">ParentChoice</span>
+                </div>
+                <div class="sp-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                    <span class="sp-logo-text">App of the Year</span>
+                </div>
+            </div>
+
+            <div class="sp-metrics reveal delay-2">
+                <div class="sp-metric">
+                    <div class="sp-metric-number">2M+</div>
+                    <div class="sp-metric-text">Lessons Completed</div>
+                </div>
+                <div class="sp-metric">
+                    <div class="sp-metric-number">150+</div>
+                    <div class="sp-metric-text">Countries</div>
+                </div>
+                <div class="sp-metric">
+                    <div class="sp-metric-number">12</div>
+                    <div class="sp-metric-text">Awards Won</div>
+                </div>
+                <div class="sp-metric">
+                    <div class="sp-metric-number">98%</div>
+                    <div class="sp-metric-text">Parent Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section class="features" id="features" aria-labelledby="featuresTitle">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Why BrightMinds
+                </div>
+                <h2 class="section-title" id="featuresTitle">Learning That Adapts<br>to Every Child</h2>
+                <p class="section-subtitle">Built with child development experts and powered by adaptive AI that creates a personalized journey for each learner.</p>
+            </div>
+
+            <div class="features-grid">
+                <article class="feature-card reveal delay-1">
+                    <div class="feature-icon-wrap fi-1">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/><path d="M12 18v-2"/></svg>
+                    </div>
+                    <h3 class="feature-title">Adaptive AI Learning</h3>
+                    <p class="feature-desc">Our AI adjusts difficulty in real-time, ensuring your child is always challenged but never overwhelmed. Every path is unique.</p>
+                </article>
+
+                <article class="feature-card reveal delay-2">
+                    <div class="feature-icon-wrap fi-2">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="11" x2="10" y2="11"/><line x1="8" y1="9" x2="8" y2="13"/><line x1="15" y1="12" x2="15.01" y2="12"/><line x1="18" y1="10" x2="18.01" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Game-Based Lessons</h3>
+                    <p class="feature-desc">Fractions become adventures, vocabulary turns into quests. Gamified learning keeps kids coming back voluntarily.</p>
+                </article>
+
+                <article class="feature-card reveal delay-3">
+                    <div class="feature-icon-wrap fi-3">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="feature-title">Parent Dashboard</h3>
+                    <p class="feature-desc">Track progress, set goals, and get weekly insights from your phone. Know exactly where your child excels.</p>
+                </article>
+
+                <article class="feature-card reveal delay-4">
+                    <div class="feature-icon-wrap fi-4">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C6.5 4 8 5.5 8 7.5"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17.5 4 16 5.5 16 7.5"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                    </div>
+                    <h3 class="feature-title">Reward System</h3>
+                    <p class="feature-desc">Badges, streaks, and virtual rewards celebrate every milestone, building confidence and intrinsic motivation.</p>
+                </article>
+
+                <article class="feature-card reveal delay-5">
+                    <div class="feature-icon-wrap fi-5">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="feature-title">COPPA Safe & Private</h3>
+                    <p class="feature-desc">Zero ads, zero data selling, full COPPA + GDPR compliance. Your child's privacy is our top priority.</p>
+                </article>
+
+                <article class="feature-card reveal delay-6">
+                    <div class="feature-icon-wrap fi-6">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="feature-title">Full K-8 Curriculum</h3>
+                    <p class="feature-desc">Math, Science, Reading, Writing & more — all aligned with Common Core and designed by certified educators.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SHOWCASE ========== -->
+    <section class="showcase" id="showcase" aria-labelledby="showcaseTitle">
+        <div class="container">
+            <div class="showcase-grid">
+                <div class="reveal-left">
+                    <div class="showcase-screen">
+                        <div class="screen-chrome" aria-hidden="true">
+                            <div class="screen-dots">
+                                <div class="screen-dot dot-r"></div>
+                                <div class="screen-dot dot-y"></div>
+                                <div class="screen-dot dot-g"></div>
+                            </div>
+                            <div class="screen-url">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                app.brightminds.com/learn
+                            </div>
+                        </div>
+                        <div class="screen-body">
+                            <div class="lesson-item">
+                                <div class="lesson-icon-wrap li-purple">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 8h8"/><path d="M8 12h8"/><path d="M8 16h4"/></svg>
+                                </div>
+                                <div class="lesson-info">
+                                    <div class="lesson-name">Multiplication Adventures</div>
+                                    <div class="lesson-meta">Grade 3 · 15 min</div>
+                                </div>
+                                <div class="lesson-status status-done">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                    Done
+                                </div>
+                            </div>
+                            <div class="lesson-item">
+                                <div class="lesson-icon-wrap li-teal">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/><path d="M7 16.5h10"/></svg>
+                                </div>
+                                <div class="lesson-info">
+                                    <div class="lesson-name">Plant Life Cycles</div>
+                                    <div class="lesson-meta">Science · 12 min</div>
+                                </div>
+                                <div class="lesson-status status-active">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    Active
+                                </div>
+                            </div>
+                            <div class="lesson-item">
+                                <div class="lesson-icon-wrap li-pink">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                                </div>
+                                <div class="lesson-info">
+                                    <div class="lesson-name">Story Writing Workshop</div>
+                                    <div class="lesson-meta">English · 20 min</div>
+                                </div>
+                                <div class="lesson-status status-new">New</div>
+                            </div>
+                            <div class="lesson-item">
+                                <div class="lesson-icon-wrap li-amber">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                                </div>
+                                <div class="lesson-info">
+                                    <div class="lesson-name">World Geography</div>
+                                    <div class="lesson-meta">Social Studies · 18 min</div>
+                                </div>
+                                <div class="lesson-status status-new">New</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-info reveal-right">
+                    <div class="section-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+                        How It Works
+                    </div>
+                    <h2 class="showcase-title" id="showcaseTitle">A Personal Tutor<br>in Their Pocket</h2>
+                    <p class="showcase-desc">BrightMinds creates a customized learning path for each child, adapting in real-time to their pace, strengths, and interests.</p>
+
+                    <ul class="check-list">
+                        <li>
+                            <span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Quick 5-minute assessment personalizes everything
+                        </li>
+                        <li>
+                            <span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Bite-sized lessons designed for young attention spans
+                        </li>
+                        <li>
+                            <span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Instant feedback helps kids learn from mistakes
+                        </li>
+                        <li>
+                            <span class="check-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            Weekly parent reports with actionable insights
+                        </li>
+                    </ul>
+
+                    <a href="#cta" class="btn btn-primary btn-lg">
+                        Try Free for 14 Days
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BENEFITS ========== -->
+    <section class="benefits" id="benefits" aria-labelledby="benefitsTitle">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                    Parent Benefits
+                </div>
+                <h2 class="section-title" id="benefitsTitle">Why Parents Choose BrightMinds</h2>
+                <p class="section-subtitle">Designed to solve the real challenges modern parents face with their children's education.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <article class="benefit-card reveal delay-1">
+                    <div class="benefit-num">01</div>
+                    <div class="benefit-body">
+                        <h3>End Homework Battles</h3>
+                        <p>When learning feels like play, kids want to do it. 87% of parents report less friction around study time within the first month.</p>
+                    </div>
+                </article>
+                <article class="benefit-card reveal delay-2">
+                    <div class="benefit-num">02</div>
+                    <div class="benefit-body">
+                        <h3>Build Real Confidence</h3>
+                        <p>Our mastery-based approach means kids truly understand concepts before moving on, building deep confidence that transfers to the classroom.</p>
+                    </div>
+                </article>
+                <article class="benefit-card reveal delay-3">
+                    <div class="benefit-num">03</div>
+                    <div class="benefit-body">
+                        <h3>Reclaim Your Evenings</h3>
+                        <p>BrightMinds guides your child independently through lessons, giving you peace of mind — and a few extra minutes to yourself.</p>
+                    </div>
+                </article>
+                <article class="benefit-card reveal delay-4">
+                    <div class="benefit-num">04</div>
+                    <div class="benefit-body">
+                        <h3>See Measurable Growth</h3>
+                        <p>No more guessing. Detailed analytics show exactly how your child is progressing, subject by subject, week by week.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="testimonials" id="testimonials" aria-labelledby="testimonialsTitle">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                    Real Stories
+                </div>
+                <h2 class="section-title" id="testimonialsTitle">Loved by 50,000+ Families</h2>
+                <p class="section-subtitle">Hear from parents whose children's relationship with education has transformed.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <article class="testimonial-card reveal delay-1">
+                    <div class="tc-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        Verified
+                    </div>
+                    <div class="tc-stars" aria-label="5 out of 5 stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                    </div>
+                    <p class="tc-quote">"My daughter went from dreading math to asking for 'just one more lesson.' Her teacher noticed the improvement within three weeks. I'm genuinely amazed."</p>
+                    <div class="tc-author">
+                        <div class="tc-avatar tc-av-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div>
+                            <div class="tc-name">Sarah Mitchell</div>
+                            <div class="tc-role">Mom of Emma, Age 8 · Portland, OR</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card reveal delay-2">
+                    <div class="tc-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        Verified
+                    </div>
+                    <div class="tc-stars" aria-label="5 out of 5 stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                    </div>
+                    <p class="tc-quote">"As a busy dad, I love the parent dashboard. I can check on my son's progress during lunch and actually have informed conversations about what he's learning."</p>
+                    <div class="tc-author">
+                        <div class="tc-avatar tc-av-2">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div>
+                            <div class="tc-name">James Rodriguez</div>
+                            <div class="tc-role">Dad of Lucas, Age 10 · Austin, TX</div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card reveal delay-3">
+                    <div class="tc-badge">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                        Verified
+                    </div>
+                    <div class="tc-stars" aria-label="5 out of 5 stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                    </div>
+                    <p class="tc-quote">"We tried four different apps before BrightMinds. This is the only one both my kids stuck with. The adaptive difficulty is the real magic — it meets them exactly where they are."</p>
+                    <div class="tc-author">
+                        <div class="tc-avatar tc-av-3">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div>
+                            <div class="tc-name">Priya Sharma</div>
+                            <div class="tc-role">Mom of Avi & Zara · Chicago, IL</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRICING ========== -->
+    <section class="pricing" id="pricing" aria-labelledby="pricingTitle">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l4 6-10 13L2 9Z"/><path d="M11 3 8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+                    Simple Pricing
+                </div>
+                <h2 class="section-title" id="pricingTitle">Invest in Your Child's Future</h2>
+                <p class="section-subtitle">Every plan includes full curriculum access. Start free, upgrade anytime.</p>
+            </div>
+
+            <div class="pricing-toggle reveal delay-1">
+                <span class="pricing-toggle-label" id="monthlyLabel">Monthly</span>
+                <button class="toggle-switch" id="pricingToggle" role="switch" aria-checked="false" aria-label="Toggle annual pricing">
+                    <div class="toggle-knob"></div>
+                </button>
+                <span class="pricing-toggle-label" id="annualLabel">Annual</span>
+                <span class="pricing-save">Save 33%</span>
+            </div>
+
+            <div class="pricing-grid">
+                <article class="pricing-card reveal delay-1">
+                    <div class="pc-plan">Starter</div>
+                    <div class="pc-price">
+                        <span class="pc-currency">$</span>
+                        <span class="pc-amount">0</span>
+                    </div>
+                    <div class="pc-subtitle">Free forever — no credit card</div>
+                    <ul class="pc-features">
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>1 child profile</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>5 lessons per week</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Basic progress tracking</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Math & Reading only</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Community support</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-secondary btn-lg">Get Started Free</a>
+                </article>
+
+                <article class="pricing-card popular reveal delay-2">
+                    <div class="popular-tag">Most Popular</div>
+                    <div class="pc-plan">Family</div>
+                    <div class="pc-price">
+                        <span class="pc-currency">$</span>
+                        <span class="pc-amount" id="familyPrice">12</span>
+                        <span class="pc-period">/mo</span>
+                    </div>
+                    <div class="pc-subtitle" id="familySub">Billed annually at $144/year</div>
+                    <ul class="pc-features">
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Up to 4 child profiles</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Unlimited lessons</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Advanced parent dashboard</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>All subjects + enrichment</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Offline mode</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Weekly reports</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Priority support</li>
+                    </ul>
+                    <a href="#cta" class="btn btn-primary btn-lg">Start 14-Day Free Trial</a>
+                </article>
+
+                <article class="pricing-card reveal delay-3">
+                    <div class="pc-plan">School</div>
+                    <div class="pc-price">
+                        <span class="pc-currency">$</span>
+                        <span class="pc-amount" id="schoolPrice">8</span>
+                        <span class="pc-period">/seat/mo</span>
+                    </div>
+                    <div class="pc-subtitle" id="schoolSub">For classrooms & schools</div>
+                    <ul class="pc-features">
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Unlimited students</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Teacher admin dashboard</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Classroom analytics</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Standards reports</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>LMS integration</li>
+                        <li><span class="pc-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Account manager</li>
+                    </ul>
+                    <a href="#" class="btn btn-secondary btn-lg">Contact Sales</a>
+                </article>
+            </div>
+
+            <div class="pricing-guarantee reveal">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                30-day money-back guarantee · No contracts · Cancel anytime
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="faq" id="faq" aria-labelledby="faqTitle">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                    FAQ
+                </div>
+                <h2 class="section-title" id="faqTitle">Common Questions</h2>
+                <p class="section-subtitle">Everything you need to know about BrightMinds.</p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item reveal delay-1">
+                    <button class="faq-q" aria-expanded="false">
+                        What age range is BrightMinds designed for?
+                        <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </button>
+                    <div class="faq-a" role="region"><div class="faq-a-inner">BrightMinds serves children ages 4–14 (Pre-K through 8th grade). Our adaptive AI adjusts content difficulty, visual complexity, and interaction patterns based on your child's age and skill level automatically.</div></div>
+                </div>
+                <div class="faq-item reveal delay-2">
+                    <button class="faq-q" aria-expanded="false">
+                        How much screen time does BrightMinds recommend?
+                        <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </button>
+                    <div class="faq-a" role="region"><div class="faq-a-inner">We recommend 15–30 minutes daily. Built-in session timers help manage time, and parents can set custom daily limits through the dashboard. Short, consistent sessions outperform long, sporadic ones.</div></div>
+                </div>
+                <div class="faq-item reveal delay-3">
+                    <button class="faq-q" aria-expanded="false">
+                        Is my child's data safe and private?
+                        <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </button>
+                    <div class="faq-a" role="region"><div class="faq-a-inner">Absolutely. We're fully COPPA compliant, GDPR compliant, and kidSAFE Seal certified. We never sell data, never show ads, and use enterprise-grade encryption. Learning data is used solely to personalize your child's experience.</div></div>
+                </div>
+                <div class="faq-item reveal delay-4">
+                    <button class="faq-q" aria-expanded="false">
+                        Can I use BrightMinds on multiple devices?
+                        <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </button>
+                    <div class="faq-a" role="region"><div class="faq-a-inner">Yes! BrightMinds works on iPads, Android tablets, smartphones, Chromebooks, and web browsers. Progress syncs seamlessly across all devices. The Family plan supports up to 4 simultaneous users.</div></div>
+                </div>
+                <div class="faq-item reveal delay-5">
+                    <button class="faq-q" aria-expanded="false">
+                        What subjects does BrightMinds cover?
+                        <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </button>
+                    <div class="faq-a" role="region"><div class="faq-a-inner">The Family plan covers Math, Reading & Writing, Science, Social Studies, Art & Creativity, and Critical Thinking. All content aligns with Common Core, NGSS, and state standards. 5,000+ interactive lessons with new content added monthly.</div></div>
+                </div>
+                <div class="faq-item reveal delay-6">
+                    <button class="faq-q" aria-expanded="false">
+                        What if my child doesn't like it?
+                        <span class="faq-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+                    </button>
+                    <div class="faq-a" role="region"><div class="faq-a-inner">Start with our 14-day free trial (no credit card required). If you upgrade and aren't satisfied, our 30-day money-back guarantee gives you a full refund, no questions asked.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FINAL CTA ========== -->
+    <section class="final-cta" id="cta" aria-labelledby="ctaTitle">
+        <div class="container">
+            <div class="cta-card reveal-scale">
+                <div class="cta-inner">
+                    <h2 class="cta-title" id="ctaTitle">Give Your Child the Gift<br>of Loving to Learn</h2>
+                    <p class="cta-subtitle">Join 50,000+ families who've transformed their children's relationship with education. Start free today.</p>
+
+                    <form class="cta-form" id="ctaForm" aria-label="Sign up for free trial">
+                        <input type="email" class="cta-input" placeholder="Enter your email address" required aria-label="Email address" id="ctaEmail">
+                        <button type="submit" class="cta-submit">
+                            Start Free Trial
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </form>
+
+                    <div class="cta-success" id="ctaSuccess">
+                        ✓ You're in! Check your email for next steps.
+                    </div>
+
+                    <div class="cta-note" id="ctaNote">
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            No credit card required
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            14-day free trial
+                        </span>
+                        <span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                            Cancel anytime
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" aria-label="BrightMinds home">
+                        <div class="logo-mark">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2z"/></svg>
+                        </div>
+                        BrightMinds
+                    </a>
+                    <p>Transforming screen time into learning time for ages 4-14. Trusted by 50,000+ families in 150+ countries.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-btn" aria-label="Twitter">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+                        </a>
+                        <a href="#" class="social-btn" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Curriculum</a></li>
+                        <li><a href="#">For Schools</a></li>
+                        <li><a href="#">Parent App</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Educators</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Safety Center</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 BrightMinds Education, Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                    <a href="#">COPPA</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ========== SCROLL PROGRESS ==========
+        const scrollProgress = document.getElementById('scrollProgress');
+        function updateProgress() {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.style.width = ((scrollTop / docHeight) * 100) + '%';
+        }
+
+        // ========== NAVBAR ==========
+        const navbar = document.getElementById('navbar');
+        function updateNavbar() {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+        }
+
+        // ========== SCROLL REVEAL (Intersection Observer) ==========
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -60px 0px'
+        });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // ========== HERO PROGRESS BAR ==========
+        const heroProgressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    heroProgressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroProgressBar = document.getElementById('heroProgress');
+        if (heroProgressBar) heroProgressObserver.observe(heroProgressBar);
+
+        // ========== MOBILE MENU ==========
+        const toggle = document.getElementById('mobileToggle');
+        const menu = document.getElementById('mobileMenu');
+
+        toggle.addEventListener('click', () => {
+            const isOpen = toggle.classList.toggle('open');
+            menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen);
+            toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        function closeMobile() {
+            toggle.classList.remove('open');
+            menu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open menu');
+            document.body.style.overflow = '';
+        }
+
+        // ========== FAQ ==========
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasOpen = item.classList.contains('open');
+
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+                });
+
+                // Open clicked if it was closed
+                if (!wasOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // ========== PRICING TOGGLE ==========
+        const pricingToggle = document.getElementById('pricingToggle');
+        const familyPrice = document.getElementById('familyPrice');
+        const familySub = document.getElementById('familySub');
+        const schoolPrice = document.getElementById('schoolPrice');
+        const schoolSub = document.getElementById('schoolSub');
+        const monthlyLabel = document.getElementById('monthlyLabel');
+        const annualLabel = document.getElementById('annualLabel');
+
+        let isAnnual = false;
+
+        pricingToggle.addEventListener('click', () => {
+            isAnnual = !isAnnual;
+            pricingToggle.classList.toggle('active', isAnnual);
+            pricingToggle.setAttribute('aria-checked', isAnnual);
+            monthlyLabel.classList.toggle('active', !isAnnual);
+            annualLabel.classList.toggle('active', isAnnual);
+
+            if (isAnnual) {
+                familyPrice.textContent = '12';
+                familySub.textContent = 'Billed annually at $144/year';
+                schoolPrice.textContent = '8';
+                schoolSub.textContent = 'Billed annually per seat';
+            } else {
+                familyPrice.textContent = '18';
+                familySub.textContent = 'Billed monthly';
+                schoolPrice.textContent = '12';
+                schoolSub.textContent = 'Billed monthly per seat';
+            }
+        });
+
+        // Initialize to annual
+        pricingToggle.click();
+
+        // ========== CTA FORM ==========
+        const ctaForm = document.getElementById('ctaForm');
+        const ctaSuccess = document.getElementById('ctaSuccess');
+        const ctaNote = document.getElementById('ctaNote');
+
+        ctaForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('ctaEmail').value;
+            if (email) {
+                ctaForm.style.display = 'none';
+                ctaNote.style.display = 'none';
+                ctaSuccess.style.display = 'block';
+            }
+        });
+
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const offset = 80;
+                    const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top: pos, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ========== SCROLL LISTENERS ==========
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateProgress();
+                    updateNavbar();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+
+        // ========== INIT ==========
+        updateNavbar();
+        updateProgress();
+    </script>
+</body>
+</html>
