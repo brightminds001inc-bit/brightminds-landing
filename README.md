@@ -158,4 +158,4 @@ If this helped you, give it a star ⭐ and share it with others!
 
 ---
 
-Built with ❤️ by [Your Name]
+Built with ❤️ by BrightMinds
